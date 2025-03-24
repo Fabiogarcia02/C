@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    char X;
+    int n1, n2;
+    float resultado;  
+
+    printf("Digite alguma operação operação (ex: 3 + 4, 6 - 2, 8 * 2, 10 / 2): ");
+    
+   
+    scanf("%d %c %d", &n1, &X, &n2);
+
+   
+    if (X == '+') {
+        resultado = n1 + n2;
+        printf("O resultado da soma é: %.2f\n", resultado);
+    }
+    else if (X == '-') {
+        resultado = n1 - n2;
+        printf("O resultado da subtração é: %.2f\n", resultado);
+    }
+    else if (X == '*') {
+        resultado = n1 * n2;
+        printf("O resultado da multiplicação é: %.2f\n", resultado);
+    }
+    else if (X == '/') {
+        // Verifica se o denominador é zero antes de realizar a divisão
+        if (n2 != 0) {
+            resultado = (float)n1 / n2;
+            printf("O resultado da divisão é: %.2f\n", resultado);
+        } else {
+            printf("Erro: Divisão por zero não é permitida.\n");
+        }
+    } else {
+        printf("Operador inválido! Tente novamente com +, -, * ou /\n");
+    }
+
+    return 0;
+}
