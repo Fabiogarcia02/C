@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_TENTATIVAS 6
+
+void exibir_forca(int tentativas) {
+    switch(tentativas) {
+        case 0:
+            printf("\n  -----\n |     |\n       |\n       |\n       |\n       |\n=========\n");
+            break;
+        case 1:
+            printf("\n  -----\n |     |\n O     |\n       |\n       |\n       |\n=========\n");
+            break;
+        case 2:
+            printf("\n  -----\n |     |\n O     |\n |     |\n       |\n       |\n=========\n");
+            break;
+        case 3:
+            printf("\n  -----\n |     |\n O     |\n/|     |\n       |\n       |\n=========\n");
+            break;
+        case 4:
+            printf("\n  -----\n |     |\n O     |\n/|\\    |\n       |\n       |\n=========\n");
+            break;
+        case 5:
+            printf("\n  -----\n |     |\n O     |\n/|\\    |\n/      |\n       |\n=========\n");
+            break;
+        case 6:
+            printf("\n  -----\n |     |\n O     |\n/|\\    |\n/ \\    |\n       |\n=========\n");
+            break;
+    }
+}
+
+int main() {
+    char palavra_secreta[] = "programacao";
+    int comprimento = strlen(palavra_secreta);
+    char palavra_descoberta[comprimento];
+    int tentativas = 0;
+    int letras_corretas = 0;
+    char letra;
+
+    // Inicializa as letras descobertas com '_'
+    for (int i = 0; i < comprimento; i++) {
+        palavra_descoberta[i] = '_';
+    }
+
+    printf("Bem-vindo ao Jogo da Forca!\n");
+
+    while (tentativas < MAX_TENTATIVAS && letras_corretas < comprimento) {
+        printf("\nPalavra: ");
+        for (int i = 0; i < comprimento; i++) {
+            printf("%c ", palavra_descoberta[i]);
+        }
+        printf("\nTentativas restantes: %d\n", MAX_TENTATIVAS - tentativas);
+
+        // Exibe a forca com base nas tentativas
+        exibir_forca(tentativas);
+
+        printf("Digite uma letra: ");
+        scanf(" %c", &letra);
+
+        int encontrou = 0;
+        for (int i = 0; i < comprimento; i++) {
+            if (palavra_secreta[i] == letra && palavra_descoberta[i] == '_') {
+                palavra_descoberta[i] = letra;
+                letras_corretas++;
+                encontrou = 1;
+            }
+        }
+
+        if (!encontrou) {
+            tentativas++;
+        }
+
+        if (letras_corretas == comprimento) {
+            printf("\nParabéns! Você adivinhou a palavra '%s'!\n", palavra_secreta);
+            break;
+        }
+    }
+
+    if (tentativas == MAX_TENTATIVAS) {
+        printf("\nVocê perdeu! A palavra era '%s'.\n", palavra_secreta);
+    }
+
+    return 0;
+}
