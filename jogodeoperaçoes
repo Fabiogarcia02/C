@@ -1,0 +1,80 @@
+#include <stdio.h>
+
+// Funções para operações matemáticas
+int multi(int a, int b) { return a * b; }
+int adi(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+int divi(int a, int b) { 
+    if (b == 0) {
+        printf("\n🚨 Erro: divisão por zero não é permitida!\n");
+        return 0;
+    }
+    return a / b; 
+}
+
+void carregando() {
+    printf("\n⏳ Calculando");
+    for (int i = 0; i < 3; i++) {
+        printf(".");
+        fflush(stdout);  // Atualiza a saída no console
+        for (int j = 0; j < 100000000; j++);  // Pequeno delay
+    }
+    printf("\n");
+}
+
+int main() {
+    int caso, x, y, resultado;
+    char continuar;
+
+    do {
+        // Exibe o menu de opções
+        printf("\n🔢 ===== CALCULADORA INTERATIVA ===== 🔢\n");
+        printf("📌 Escolha uma operação:\n");
+        printf(" 1️⃣ - Multiplicação (x)\n");
+        printf(" 2️⃣ - Adição (+)\n");
+        printf(" 3️⃣ - Subtração (-)\n");
+        printf(" 4️⃣ - Divisão (/)\n");
+        printf("======================================\n");
+        printf("➡️ Digite sua escolha: ");
+        scanf("%d", &caso);
+
+        // Se a opção for válida, pede os números
+        if (caso >= 1 && caso <= 4) {
+            printf("\n✍️ Insira dois números: ");
+            scanf("%d %d", &x, &y);
+            carregando(); // Simula um pequeno carregamento
+        }
+
+        // Escolhe a operação com base na opção
+        switch (caso) {
+            case 1:
+                resultado = multi(x, y);
+                printf("\n🟢 O resultado da multiplicação é: %d\n", resultado);
+                break;
+            case 2:
+                resultado = adi(x, y);
+                printf("\n🟢 O resultado da adição é: %d\n", resultado);
+                break;
+            case 3:
+                resultado = sub(x, y);
+                printf("\n🟢 O resultado da subtração é: %d\n", resultado);
+                break;
+            case 4:
+                resultado = divi(x, y);
+                if (y != 0) {
+                    printf("\n🟢 O resultado da divisão é: %d\n", resultado);
+                }
+                break;
+            default:
+                printf("\n❌ Opção inválida! Escolha um número entre 1 e 4.\n");
+        }
+
+        // Perguntar se deseja continuar
+        printf("\n🔄 Deseja realizar outra operação? (s/n): ");
+        scanf(" %c", &continuar);
+        
+    } while (continuar == 's' || continuar == 'S');
+
+    printf("\n🎉 Obrigado por usar a Calculadora Interativa! Até mais! 👋\n");
+    return 0;
+}
