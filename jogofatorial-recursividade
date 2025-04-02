@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+unsigned long long fatorial(int x) {
+    if (x == 0) {
+        return 1;
+    } else {
+        return x * fatorial(x - 1);
+    }
+}
+
+int main() {
+    int x;
+    unsigned long long fat;
+
+    printf("🌟 BEM-VINDO AO DESAFIO DO FATORIAL! 🌟\n");
+    printf("🔢 Digite um número e veja sua mágica acontecer! ✨\n\n");
+
+    printf("🎮 Escolha um número: ");
+    scanf("%d", &x);
+
+    if (x < 0) {
+        printf("❌ Opa! Não existe fatorial de número negativo. Tente novamente! 🔄\n");
+    } else {
+        fat = fatorial(x);
+        printf("\n💡 Calculando fatorial de %d...\n", x);
+        printf("🎆 O resultado é: 🎉 %llu 🎉\n", fat);
+    }
+
+    printf("\n🏆 Obrigado por jogar! Até a próxima! 🚀\n");
+
+    return 0;
+}
