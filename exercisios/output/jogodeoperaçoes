@@ -24,7 +24,7 @@ int main() {
         printf("O resultado da multiplicação é: %.2f\n", resultado);
     }
     else if (X == '/') {
-        // Verifica se o denominador é zero antes de realizar a divisão
+
         if (n2 != 0) {
             resultado = (float)n1 / n2;
             printf("O resultado da divisão é: %.2f\n", resultado);
