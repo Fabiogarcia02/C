@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+void limparBuffer() {
+    while (getchar() != '\n'); // Limpa o buffer do teclado
+}
+
+int jogo_numero(int n1, int n2, int n3, char L) {
+    int media = (n1 + n2 + n3) / 3;
+    int mediap = ((n1 * 5) + (n2 * 3) + (n3 * 2)) / (5 + 3 + 2);
+
+    if (L == 'A') {
+        return media;
+    }
+    if (L == 'P') {
+        return mediap;
+    }
+
+    printf("\n🚨 ERROR... Letra inválida! Tente novamente! 🚨\n");
+    return -1; // Indica erro
+}
+
+int main() {
+    char escolha;
+    int N1, N2, N3, resultado;
+
+    printf("\n🎮 Bem-vindo ao Desafio das Médias! 🎮\n");
+    printf("==============================\n");
+    printf("📜 Regras do jogo:\n");
+    printf("- Você deve digitar 3 números inteiros.\n");
+    printf("- Escolha o tipo de cálculo que deseja fazer: Média Aritmética ou Ponderada.\n");
+    printf("==============================\n\n");
+
+    printf("Digite os 3 números mágicos ✨: ");
+    scanf("%d %d %d", &N1, &N2, &N3);
+    limparBuffer();
+
+    printf("\nAgora escolha o cálculo que deseja fazer!\n");
+    printf("🔵 Digite 'A' para Média Aritmética 📏\n");
+    printf("🟠 Digite 'P' para Média Ponderada ⚖️\n");
+    printf("Sua escolha: ");
+    scanf("%c", &escolha);
+
+    resultado = jogo_numero(N1, N2, N3, escolha);
+    
+    if (resultado != -1) {
+        printf("\n🎉 Parabéns! O resultado é: %d 🎯\n", resultado);
+    } else {
+        printf("\n⚠️ Jogo encerrado devido a erro! Tente novamente! ⚠️\n");
+    }
+    
+    printf("\nObrigado por jogar! 🚀\n");
+    return 0;
+}
