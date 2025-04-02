@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void limparBuffer() {
-    while (getchar() != '\n'); // Limpa o buffer do teclado
+    while (getchar() != '\n'); 
 }
 
 int jogo_numero(int n1, int n2, int n3, char L) {
@@ -16,7 +16,7 @@ int jogo_numero(int n1, int n2, int n3, char L) {
     }
 
     printf("\n🚨 ERROR... Letra inválida! Tente novamente! 🚨\n");
-    return -1; // Indica erro
+    return -1; 
 }
 
 int main() {
