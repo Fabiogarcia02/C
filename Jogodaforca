@@ -38,7 +38,6 @@ int main() {
     int letras_corretas = 0;
     char letra;
 
-    // Inicializa as letras descobertas com '_'
     for (int i = 0; i < comprimento; i++) {
         palavra_descoberta[i] = '_';
     }
@@ -52,7 +51,7 @@ int main() {
         }
         printf("\nTentativas restantes: %d\n", MAX_TENTATIVAS - tentativas);
 
-        // Exibe a forca com base nas tentativas
+      
         exibir_forca(tentativas);
 
         printf("Digite uma letra: ");
