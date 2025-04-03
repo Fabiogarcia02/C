@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Função recursiva para calcular Fibonacci
+int fibonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    
+    printf("🎮 Bem-vindo ao Jogo do Fibonacci! 🎮\n");
+    printf("📢 Regras: Você digita um número e eu te mostro o valor de Fibonacci!\n\n");
+    
+    while (1) { // Loop para repetir o jogo até o usuário decidir sair
+        printf("👉 Digite um número (ou -1 para sair): ");
+        scanf("%d", &n);
+        
+        if (n == -1) {
+            printf("🚪 Saindo do jogo... Até a próxima! 👋\n");
+            break;
+        }
+
+        if (n < 0) {
+            printf("⚠️ Número inválido! Digite um número positivo.\n");
+            continue;
+        }
+
+        printf("🔢 O Fibonacci de %d é: 💡 %d 💡\n\n", n, fibonacci(n));
+    }
+
+    return 0;
+}
