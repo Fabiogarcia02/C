@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int main() {
+    float salario, somaSalario = 0, maiorSalario = 0;
+    int filhos, somaFilhos = 0, pessoas = 0, abaixo1000 = 0;
+
+    printf("🏛️ Bem-vindo à Pesquisa Interativa da Prefeitura! 🏙️\n");
+    printf("👩‍💼 Vamos coletar dados sobre os moradores!\n");
+    printf("📌 Digite um salário negativo para encerrar a pesquisa.\n\n");
+
+    while (1) {
+        printf("💰 Informe o salário do morador %d: R$ ", pessoas + 1);
+        scanf("%f", &salario);
+
+        if (salario < 0) {
+            printf("📉 Fim da coleta de dados! 🛑\n\n");
+            break;
+        }
+
+        printf("👶 Quantos filhos esse morador tem? ");
+        scanf("%d", &filhos);
+
+        // Acumula dados
+        somaSalario += salario;
+        somaFilhos += filhos;
+        pessoas++;
+
+        if (salario > maiorSalario) {
+            maiorSalario = salario;
+        }
+
+        if (salario <= 1000) {
+            abaixo1000++;
+        }
+
+        printf("✅ Dados do morador %d registrados com sucesso!\n\n", pessoas);
+    }
+
+    if (pessoas == 0) {
+        printf("⚠️ Nenhum dado foi inserido. Tente novamente depois! 😕\n");
+        return 0;
+    }
+
+    float mediaSalario = somaSalario / pessoas;
+    float mediaFilhos = (float)somaFilhos / pessoas;
+    float percentualAbaixo1000 = ((float)abaixo1000 / pessoas) * 100;
+
+    // Resultado final
+    printf("📊 RESULTADOS FINAIS DA PESQUISA 📊\n");
+    printf("👨‍👩‍👧 Total de moradores entrevistados: %d\n", pessoas);
+    printf("💵 Média salarial da população: R$ %.2f\n", mediaSalario);
+    printf("👶 Média de filhos por morador: %.2f\n", mediaFilhos);
+    printf("💸 Maior salário informado: R$ %.2f\n", maiorSalario);
+    printf("📉 Percentual de pessoas com salário até R$1000,00: %.2f%%\n", percentualAbaixo1000);
+    printf("🎉 Obrigado por participar da pesquisa! Sua cidade agradece! 🌆❤️\n");
+
+    return 0;
+}
