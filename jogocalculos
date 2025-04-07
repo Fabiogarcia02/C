@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    float e, fat1, fat2, fat3, a, b, c, fat = 1;
+
+    printf("🧮 Bem-vindo ao Calculador Interativo de Fatoriais e Valor 'e'! 😄\n");
+    printf("📥 Digite um número inteiro positivo: ");
+    scanf("%d", &n);
+
+    // Validação simples
+    if (n <= 0) {
+        printf("⚠️ Ops! Por favor, digite um número maior que zero. Tente novamente! 🙏\n");
+        return 1;
+    }
+
+    // Calcula o fatorial de n
+    for (int i = 1; i <= n; i++) {
+        fat *= i;
+    }
+
+    printf("✅ O fatorial de %d é: %.2f! 🔢\n", n, fat);
+
+    // Calcula os três fatoriais fixos
+    fat1 = 1.0 * 1;
+    fat2 = 2.0 * 1;
+    fat3 = 3.0 * 2 * 1;
+
+    // Faz os cálculos com base nos valores dados
+    a = (1.0 + 1.0) / (fat1 + 1.0);
+    b = a / (fat2 + 1.0) / (fat3 + 3.0);
+    c = a + b;
+    e = c / fat;
+
+    printf("🧠 Calculando valor de 'e' com base nos fatoriais...\n");
+    printf("📊 Resultado final de 'e': %.5f ✅\n", e);
+
+    printf("🎉 Obrigado por usar o programa! Até a próxima! 🚀\n");
+
+    return 0;
+}
