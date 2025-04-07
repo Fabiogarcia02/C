@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int main() {
+    float compra, venda;
+    int lucroBaixo = 0, lucroMedio = 0, lucroAlto = 0;
+    float totalCompra = 0, totalVenda = 0, lucroTotal = 0;
+    int contador = 1;
+
+    printf("🛒 Bem-vindo ao Simulador de Lucros do Comerciante! 💸\n");
+    printf("📦 Vamos registrar os preços de compra e venda de suas mercadorias!\n");
+    printf("❌ Digite 0 no preço de compra para encerrar.\n\n");
+
+    while (1) {
+        printf("📦 Produto %d\n", contador);
+        printf("💰 Preço de *compra*: R$ ");
+        scanf("%f", &compra);
+
+        if (compra == 0) {
+            printf("📉 Fim da entrada de mercadorias! 🛑\n\n");
+            break;
+        }
+
+        printf("🛍️ Preço de *venda*: R$ ");
+        scanf("%f", &venda);
+
+        float lucro = venda - compra;
+        float percentualLucro = (lucro / compra) * 100;
+
+        // Classifica o lucro
+        if (percentualLucro < 10.0) {
+            lucroBaixo++;
+            printf("📉 Lucro menor que 10%% (%.2f%%)\n\n", percentualLucro);
+        } else if (percentualLucro <= 20.0) {
+            lucroMedio++;
+            printf("📈 Lucro entre 10%% e 20%% (%.2f%%)\n\n", percentualLucro);
+        } else {
+            lucroAlto++;
+            printf("🚀 Lucro acima de 20%% (%.2f%%)\n\n", percentualLucro);
+        }
+
+        totalCompra += compra;
+        totalVenda += venda;
+        lucroTotal += lucro;
+        contador++;
+    }
+
+    // Resultados finais
+    printf("📊 RESULTADO FINAL DA LOJA 📊\n");
+    printf("🧾 Total de produtos cadastrados: %d\n", contador - 1);
+    printf("🔻 Lucro < 10%%: %d produtos\n", lucroBaixo);
+    printf("🔸 Lucro entre 10%% e 20%%: %d produtos\n", lucroMedio);
+    printf("🔺 Lucro > 20%%: %d produtos\n", lucroAlto);
+
+    printf("\n💰 Valor total de compra: R$ %.2f\n", totalCompra);
+    printf("🛍️ Valor total de venda: R$ %.2f\n", totalVenda);
+    printf("💹 Lucro total: R$ %.2f\n", lucroTotal);
+    printf("🎉 Obrigado por usar o simulador, volte sempre! 🏪❤️\n");
+
+    return 0;
+}
