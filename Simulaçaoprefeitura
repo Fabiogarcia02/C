@@ -3,19 +3,14 @@
 int main() {
     float salario, somaSalario = 0, maiorSalario = 0;
     int filhos, somaFilhos = 0, pessoas = 0, abaixo1000 = 0;
+    char continuar;
 
     printf("🏛️ Bem-vindo à Pesquisa Interativa da Prefeitura! 🏙️\n");
     printf("👩‍💼 Vamos coletar dados sobre os moradores!\n");
-    printf("📌 Digite um salário negativo para encerrar a pesquisa.\n\n");
 
-    while (1) {
-        printf("💰 Informe o salário do morador %d: R$ ", pessoas + 1);
+    do {
+        printf("\n💰 Informe o salário do morador %d: R$ ", pessoas + 1);
         scanf("%f", &salario);
-
-        if (salario < 0) {
-            printf("📉 Fim da coleta de dados! 🛑\n\n");
-            break;
-        }
 
         printf("👶 Quantos filhos esse morador tem? ");
         scanf("%d", &filhos);
@@ -33,8 +28,13 @@ int main() {
             abaixo1000++;
         }
 
-        printf("✅ Dados do morador %d registrados com sucesso!\n\n", pessoas);
-    }
+        printf("✅ Dados do morador %d registrados com sucesso!\n", pessoas);
+
+        // Pergunta se deseja continuar
+        printf("❓ Deseja cadastrar outro morador? (S/N): ");
+        scanf(" %c", &continuar); // espaço antes do %c ignora enter
+
+    } while (continuar == 'S' || continuar == 's');
 
     if (pessoas == 0) {
         printf("⚠️ Nenhum dado foi inserido. Tente novamente depois! 😕\n");
@@ -46,7 +46,7 @@ int main() {
     float percentualAbaixo1000 = ((float)abaixo1000 / pessoas) * 100;
 
     // Resultado final
-    printf("📊 RESULTADOS FINAIS DA PESQUISA 📊\n");
+    printf("\n📊 RESULTADOS FINAIS DA PESQUISA 📊\n");
     printf("👨‍👩‍👧 Total de moradores entrevistados: %d\n", pessoas);
     printf("💵 Média salarial da população: R$ %.2f\n", mediaSalario);
     printf("👶 Média de filhos por morador: %.2f\n", mediaFilhos);
