@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "simuladordelucros": "c"
+        "simuladordelucros": "c",
+        "caça aos números negativos": "c"
     }
 }

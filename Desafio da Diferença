@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void preencherVetorA(int A[10]) {
+    printf("🎮 Bem-vindo ao Desafio da Diferença!\n");
+    printf("🔢 Primeiro, preencha o vetor A com 10 números.\n\n");
+
+    for (int i = 0; i < 10; i++) {
+        printf("👉 Digite o valor para A[%d]: ", i);
+        scanf("%d", &A[i]);
+    }
+}
+
+void preencherVetorB(int A[10], int B[10]) {
+    printf("\n🧠 Agora preencha o vetor B.\n");
+    printf("⚠️ Atenção: O valor de B[%d] não pode ser igual a A[%d]!\n\n", 0, 0);
+
+    for (int i = 0; i < 10; i++) {
+        int valido = 0;
+
+        while (!valido) {
+            printf("👉 Digite o valor para B[%d]: ", i);
+            scanf("%d", &B[i]);
+
+            if (B[i] == A[i]) {
+                printf("❌ Valor inválido! B[%d] não pode ser igual a A[%d] (%d). Tente outro número.\n", i, i, A[i]);
+            } else {
+                valido = 1;
+            }
+        }
+    }
+}
+
+void mostrarDiferencas(int A[10], int B[10]) {
+    printf("\n📊 Diferença entre os elementos de A e B:\n");
+
+    for (int i = 0; i < 10; i++) {
+        int diff = A[i] - B[i];
+        printf("🔹 A[%d] (%d) - B[%d] (%d) = %d\n", i, A[i], i, B[i], diff);
+    }
+
+    printf("\n🏁 Fim do desafio. Obrigado por jogar!\n");
+}
+
+int main() {
+    int A[10], B[10];
+
+    preencherVetorA(A);
+    preencherVetorB(A, B);
+    mostrarDiferencas(A, B);
+
+    return 0;
+}
