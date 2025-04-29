@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    int arr[5];
+    int i, menor, posMenor, temp;
+
+    printf("🔍 Desafio: Encontre e mova o menor número!\n");
+    printf("👉 Digite 5 números inteiros:\n");
+
+    for(i = 0; i < 5; i++) {
+        printf("Número %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    // Procurar o menor valor
+    menor = arr[0];
+    posMenor = 0;
+
+    for(i = 1; i < 5; i++) {
+        if(arr[i] < menor) {
+            menor = arr[i];
+            posMenor = i;
+        }
+    }
+
+    // Trocar com a primeira posição
+    temp = arr[0];
+    arr[0] = arr[posMenor];
+    arr[posMenor] = temp;
+
+    // Mostrar vetor final
+    printf("\n📊 Vetor após a troca do menor com o primeiro elemento:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n🏆 O menor número era %d e estava na posição %d.\n", menor, posMenor);
+    return 0;
+}
