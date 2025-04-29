@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int terminaComSeis(int numero) {
+    return numero % 10 == 6;
+}
+
+int main() {
+    int vetor[100];
+    int i = 0, numero = 1;
+
+    printf("🎯 Bem-vindo ao jogo dos 100 Números Válidos!\n");
+    printf("➡️ Preenchendo com números que NÃO são múltiplos de 6 e NÃO terminam com 6...\n");
+
+    while(i < 100) {
+        if(numero % 6 != 0 && !terminaComSeis(numero)) {
+            vetor[i] = numero;
+            i++;
+        }
+        numero++;
+    }
+
+    printf("\n✅ Os 10 primeiros números válidos encontrados:\n");
+    for(int j = 0; j < 10; j++) {
+        printf("%d ", vetor[j]);
+    }
+
+    printf("\n🏁 Fim do jogo!\n");
+    return 0;
+}
