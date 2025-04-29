@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void preencheValores(int vetor[10]) {
+    int i;
+    printf("🎯 Bem-vindo ao jogo: Caça aos Números Negativos!\n");
+    printf("Digite 10 números e veja quantos negativos você consegue capturar!\n\n");
+
+    for(i = 0; i < 10; i++) {
+        printf("🧠 Digite o número %d: ", i + 1);
+        scanf("%d", &vetor[i]);
+
+        if(vetor[i] < 0) {
+            printf("✅ Você encontrou um número negativo!\n");
+        } else if(vetor[i] > 0) {
+            printf("➡️ Esse é positivo, continue tentando...\n");
+        } else {
+            printf("🟡 Número neutro! Não ajuda nem atrapalha.\n");
+        }
+    }
+}
+
+void copiaNegativos(int original[10], int negativos[10]) {
+    int i, j = 0;
+
+    for(i = 0; i < 10; i++) {
+        if(original[i] < 0) {
+            negativos[j] = original[i];
+            j++;
+        }
+    }
+
+    while(j < 10) {
+        negativos[j] = 0;
+        j++;
+    }
+}
+
+int main() {
+    int numeros[10];
+    int negativos[10];
+    int i, total = 0;
+
+    preencheValores(numeros);
+    copiaNegativos(numeros, negativos);
+
+    printf("\n🎉 Fim da rodada!\n");
+    printf("🔍 Números negativos encontrados:\n");
+
+    for(i = 0; i < 10; i++) {
+        if(negativos[i] != 0) {
+            printf("🔴 %d\n", negativos[i]);
+            total++;
+        }
+    }
+
+    if(total == 0) {
+        printf("\n😢 Nenhum negativo encontrado. Tente de novo!\n");
+    } else {
+        printf("\n🏆 Você capturou %d número(s) negativo(s)! Parabéns!\n", total);
+    }
+
+    printf("\nObrigado por jogar!\n");
+    return 0;
+}
